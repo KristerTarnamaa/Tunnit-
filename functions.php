@@ -1,5 +1,5 @@
 <?php
-
+	require("../../config.php");
 	//functions.php
 
 	/*
@@ -98,5 +98,27 @@
 				}
 				return $notice;
 	}
+	
+		function saveEvent($age, $color) {
+		
+				 
+				 $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]); 
+				 $stmt = $mysqli->prepare("INSERT INTO Vile (age, color) VALUE (?, ?)");
+				 
+				 //asendan küsimärgid
+				 //iga märgi kohta tuleb lisada üks täht - mis tüüpi muutuja on
+				 // s - string
+				 // i - int
+				 // d - double
+				 $stmt->bind_param("is", $age, $color);
+				 //t'ida käsku
+				 if( $stmt->execute()){
+					 echo "õnnestus";
+				 } else {
+						echo "<br>"."ERROR: ".$stmt->error;
+					 
+				 }	
+		
+	}	
 	
 	?>
