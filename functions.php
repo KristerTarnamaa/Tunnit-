@@ -121,4 +121,36 @@
 		
 	}	
 	
+			function getAllPeople() {
+				 
+				 $mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]); 
+		
+				$stmt = $mysqli->prepare("
+					SELECT id, age, color
+					FROM Vile
+				");
+	
+			$stmt->bind_result($id, $age, $color);
+		
+			$stmt->execute();
+			
+			$results = array();
+			
+			// tsüklit tehakse nii mitu korda, mitu rida sql lausega tuleb.			
+			while ($stmt->fetch()) {
+				
+				$human = new StdClass();
+				$human->id = $id;
+				$human->age = $age;
+				$human->Color = $color;
+			
+					//echo $color."<br>";
+					array_push($results, $human);
+					
+			}
+			
+			return $results;
+	}			
+	
+	
 	?>

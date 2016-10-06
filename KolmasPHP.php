@@ -1,5 +1,8 @@
 <?php
 	
+	//jäta email meelde kodutöö
+	//tühjad väljad kohustuslikud
+	//Äkki muudad lemmikauto margi input type text-iks?
 	
 	require("functions.php");
 	$notice="";
