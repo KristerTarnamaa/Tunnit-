@@ -152,5 +152,35 @@
 			return $results;
 	}			
 	
+			function cleanInput($input) {
+				
+				// input = "  mina  "
+				$input = trim($input);
+				// input = "mina"
+				
+				//võtab välja \ tähemärgid
+				$input = stripslashes($input);
+				
+				// html asendab ">" &gt -iga
+				$input = htmlspecialchars($input);
+				
+				//otsib välja $inputis ";" ja kui on olemas muudab inputi "jamaks", mis ei lase lauset läbi.
+				if (strpos($input, ';') > -1) {
+				
+				$input = "jama";
+				
+				return $input;
+				
+				} else {
+				
+				return $input;
+				
+				}
+				
+				
+				
+			}
+	
+	
 	
 	?>

@@ -6,7 +6,7 @@
 	
 	//kui ei ole sisse loginud, suunan login lehele.
 	if(!isset($_SESSION["userId"])) {
-		header("Location: KolmasPHP.php");
+		header("Location: Login.php");
 	}
 	
 	
@@ -15,7 +15,7 @@
 		
 		session_destroy();
 		
-		header("Location: KolmasPHP.php");
+		header("Location: Login.php");
 		
 	}
 			if(ISSET($_POST["age"]) &&
@@ -77,6 +77,7 @@ echo "</pre>";*/
 				$html .= "<td>".$p->id."</td>";
 				$html .= "<td>".$p->age."</td>";
 				$html .= "<td>".$p->Color."</td>";
+				$html .= "<td><a href='edit.php?id=".$p->id."'>edit.php</a></td>";
 			$html .= "</tr>";
 		}
 		$html .= "</table>";			
